@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // db
-mongoose.connect('mongodb://localhost/JnPlant:27018');
+mongoose.connect('mongodb://localhost:27018/JnPlant');
 app.models = require('./models/index');
 // used for testing
 app.mongoose = mongoose;
@@ -76,6 +76,10 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+process.on('uncaughtException', function (err) {
+    console.log(err);
 });
 
 
