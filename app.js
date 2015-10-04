@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // db
-mongoose.connect('mongodb://localhost/JnPlant');
+mongoose.connect('mongodb://localhost/JnPlant:27018');
 app.models = require('./models/index');
 // used for testing
 app.mongoose = mongoose;
