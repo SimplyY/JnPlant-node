@@ -1,3 +1,6 @@
 module.exports = {
-  '/scene': require('./controllers/scene')
+    restfulRoutes: {
+        '/scene': require('./controllers/scene')
+    }
+
 };

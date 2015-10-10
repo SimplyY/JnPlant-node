@@ -9,15 +9,17 @@ var mongoose = require('mongoose');
 
 
 var app = express();
+app.config = require('./config')
 
-// view engine setup
+
+// view
+// 原来以.ejs为后缀的模板页，现在的后缀名可以//是.html了
+app.engine('.html', require('ejs').__express);
+// 设置视图模板的默认后缀名为.html,避免了每次res.Render("xx.html")的尴尬
+app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
-// ejs
-var ejs = require('ejs');
-ejs.open = '{{';
-ejs.close = '}}';
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -25,7 +27,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 
 // db
@@ -35,15 +37,21 @@ app.models = require('./models/index');
 app.mongoose = mongoose;
 
 // Load the routes.
-app.ROOT_API_ROUTE = '/JnPlant/api';
+app.ROOT_REST_API_ROUTE = '/JnPlant/api';
 var routes = require('./routes');
-_.each(routes, function(controller, route) {
-    app.use(route, controller(app, app.ROOT_API_ROUTE, route));
+var restfulRoutes = routes.restfulRoutes;
+_.each(restfulRoutes, function(controller, route) {
+    app.use(route, controller(app, app.ROOT_REST_API_ROUTE, route));
 });
 
-console.log('Listening on port 8080...');
-app.listen(8080);
+console.log('Listening on port ' + app.config.Port + ' ...');
+app.listen(app.config.Port);
 
+
+app.get('/', function (req, res) {
+    console.log('test');
+    res.render('contribute', {});
+});
 
 
 // catch 404 and forward to error handler
