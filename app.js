@@ -48,8 +48,7 @@ console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
 
 
-app.get('/', function (req, res) {
-    console.log('test');
+app.get('/contribute', function (req, res) {
     res.render('contribute', {});
 });
 
