@@ -9,8 +9,15 @@ var mongoose = require('mongoose');
 
 
 var app = express();
-app.config = require('./config')
+app.config = require('./config');
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
 
 // view
 // 原来以.ejs为后缀的模板页，现在的后缀名可以//是.html了
