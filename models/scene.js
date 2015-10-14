@@ -15,9 +15,10 @@ var sceneSchema = new mongoose.Schema({
         required: true
     },
     month: {
-        type: String,
+        type: Number,
         required: true
     },
+    // 用来在美景 list 里呈现一个美景的图片
     img: {
         type: String,
         required: true
@@ -26,7 +27,7 @@ var sceneSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
+    // 是否审核通过
     hasChecked: {
         type: Boolean,
         required: true
