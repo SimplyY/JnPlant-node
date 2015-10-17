@@ -18,6 +18,10 @@ var sceneSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    season: {
+        type: String,
+        required: true
+    },
     // 用来在美景 list 里呈现一个美景的图片
     img: {
         type: String,
