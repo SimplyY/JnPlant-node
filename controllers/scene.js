@@ -7,7 +7,6 @@ module.exports = function(app, ROOT_ROUTE, route) {
     ).methods(['get', 'put', 'post', 'delete']);
 
     // Register this endpoint with the application.
-    rest.register(app, ROOT_ROUTE  + route);
     console.log(ROOT_ROUTE +  route);
 
     rest.before('put', needUser);
@@ -15,7 +14,10 @@ module.exports = function(app, ROOT_ROUTE, route) {
 
     rest.before('delete', needSuperUser);
 
+    rest.register(app, ROOT_ROUTE  + route);
+
     function needUser(req, res, next) {
+        console.log('test');
         if (isUser()) {
             next();
         } else {
