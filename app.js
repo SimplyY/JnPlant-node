@@ -55,16 +55,11 @@ console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
 
 
-app.get('/contribute', function (req, res) {
-    res.render('contribute', {});
-});
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
 });
 
 
