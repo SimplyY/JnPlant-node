@@ -55,7 +55,6 @@ console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
 
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -3,8 +3,8 @@ var restful = require('node-restful');
 module.exports = function(app, ROOT_ROUTE, route) {
     // Setup the controller for REST.
     var rest = restful.model(
-        'scene',
-        app.models.scene
+        'plant',
+        app.models.plant
     ).methods(['get', 'put', 'post', 'delete']);
 
     console.log(ROOT_ROUTE +  route);

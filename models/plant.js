@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-var sceneSchema = new mongoose.Schema({
+// 每一个 comment 将造成一个 notification
+var plantSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -23,7 +24,7 @@ var sceneSchema = new mongoose.Schema({
         required: true
     },
     // 用来在美景 list 里呈现一个美景的图片
-    img: {
+    imgUrl: {
         type: String,
         required: true
     },
@@ -40,7 +41,6 @@ var sceneSchema = new mongoose.Schema({
     loversAmount: {
         type: Number
     },
-
     commentsIds: {
         type: [Number],
     },
@@ -57,6 +57,5 @@ var sceneSchema = new mongoose.Schema({
 
 });
 
-
 // Export the model schema.
-module.exports = sceneSchema;
+module.exports = plantSchema;
