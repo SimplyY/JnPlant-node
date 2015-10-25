@@ -24,7 +24,7 @@ var plantSchema = new mongoose.Schema({
         required: true
     },
     // 用来在美景 list 里呈现一个美景的图片
-    imgUrl: {
+    img: {
         type: String,
         required: true
     },
