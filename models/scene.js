@@ -9,9 +9,12 @@ var sceneSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // author's id
-    author: {
+    authorId: {
         type: Number,
+        required: true
+    },
+    authorName: {
+        type: String,
         required: true
     },
     month: {
@@ -23,7 +26,7 @@ var sceneSchema = new mongoose.Schema({
         required: true
     },
     // 用来在美景 list 里呈现一个美景的图片
-    img: {
+    imgUrl: {
         type: String,
         required: true
     },
