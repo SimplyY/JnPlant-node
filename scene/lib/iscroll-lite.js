@@ -48,7 +48,7 @@ var utils = (function () {
 	};
 
 	me.prefixPointerEvent = function (pointerEvent) {
-		return window.MSPointerEvent ? 
+		return window.MSPointerEvent ?
 			'MSPointer' + pointerEvent.charAt(9).toUpperCase() + pointerEvent.substr(10):
 			pointerEvent;
 	};
@@ -252,7 +252,7 @@ function IScroll (el, options) {
 
 	this.options = {
 
-// INSERT POINT: OPTIONS 
+// INSERT POINT: OPTIONS
 
 		startX: 0,
 		startY: 0,
@@ -303,7 +303,7 @@ function IScroll (el, options) {
 
 // INSERT POINT: NORMALIZATION
 
-	// Some defaults	
+	// Some defaults
 	this.x = 0;
 	this.y = 0;
 	this.directionX = 0;
