@@ -50,9 +50,10 @@ _.each(restfulRoutes, function(controller, route) {
 });
 
 // web page
+
 // scene page
 app.get('/scene*', function(req, res) {
-    res.render('index', function(err, html) {
+    res.render('scene', function(err, html) {
         res.send(html);
     });
 });
