@@ -43,7 +43,8 @@ module.exports = function(app, ROOT_ROUTE, route) {
     function isSuperUser(argument) {
         if (isUser()) {
             // TODO 验证超级用户身份
-            return true;
+            return false;
+            // return true;
         } else {
             return false;
         }

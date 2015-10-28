@@ -29,3 +29,5 @@ node_modules
 
 mgdb-data/
 .DS_Store
+
+_tmp/
