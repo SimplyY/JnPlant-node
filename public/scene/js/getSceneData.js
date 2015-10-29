@@ -17,6 +17,11 @@
         $(".month").html(markdown.toHTML("- 月份：" + data.month.toString()));
         $(".season").html(markdown.toHTML("- 季节："+ data.season));
         $("#article-md-preview").html(markdown.toHTML(data.article));
+        setTimeout(function(){
+            if(window.mySceneScroll){
+                window.mySceneScroll.refresh();
+            }
+        },0);
     }
 
     function getQureyParams(url) {
@@ -31,9 +36,7 @@
             // scene_id=1
             var keyValue = params[i].split('=');
             searchParams[keyValue[0]] = keyValue[1];
+        }
+        return searchParams;
     }
-
-    return searchParams;
-}
-
 }());
