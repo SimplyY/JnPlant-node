@@ -1,57 +1,35 @@
-.scene-info{
+.scene-info {
     width: 98%;
     margin-left: auto;
     margin-right: auto;
 }
-
-.title{
+.title {
     text-align: center;
 }
-
-footer{
-  background-color: #4aca63;
-  height:2.5rem;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+footer {
+    background-color: #4aca63;
+    color: #ffffff;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 2.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
-
-footer .icons{
-  color: #ffffff;
-  padding: 0.5rem 0rem;
-  font-size: 1.5rem;
-  line-height: 20px;
-  width: 90%;
-  margin: 0 auto;
+footer .icons {
+    padding: 0.5rem;
+    position: relative;
 }
-
-footer .icon{
-    padding: 0 1rem;
-    display: inline-block;
+.icon1, .icon2 {
+    position: absolute;
 }
-
-.love-num,.com-num{
-  font-size: 1.4rem;
-  font-weight: 200;
+.icon1 {
+    left: 4.5rem;
 }
-
-@media screen and (min-width:768px) {
-  article{
-    width: 80%;
-  }
-  footer .icons{
-    width: 70%;
-  }
-
-  footer .icon{
-      margin: 0 11rem;
-  }
+.icon2 {
+    right: 5rem;
 }
-
-@media screen and (max-width:450px) {
-  footer .icon{
-      margin: 0 1.2rem 0 2.2rem;
-      padding-bottom: 1rem;
-  }
+.love-num, .com-num {
+    font-size: 1.4rem;
+    font-weight: 200;
 }
