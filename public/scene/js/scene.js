@@ -19,25 +19,4 @@
         }
     });
 
-    $('#scene-page').css({
-        'display': 'block',
-        'transform': 'translateX(0)'
-    });
-    $('#comment-page').css({
-        'display': 'block',
-        'transform': 'translateX(100%)'
-    });
-
-    $('.comment').tap(function() {
-        $('.view').css('transition', 'all 0.3s ease-in-out');
-        $('#scene-page').css({
-            'display': 'block',
-            'transform': 'translateX(-100%)'
-        });
-        $('#comment-page').css({
-            'display': 'block',
-            'transform': 'translateX(0)'
-        });
-    });
-
 })();

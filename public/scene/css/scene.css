@@ -13,7 +13,7 @@ article{
 }
 
 footer{
-  background-color: #ff7997;
+  background-color: #4aca63;
   height:50px;
   width: 100%;
   position: fixed;
@@ -52,6 +52,13 @@ footer .icon{
       margin: 0 11rem;
   }
 }
+
+@media screen and (min-width:400px) {
+  footer .icon{
+      margin: 0 3.7rem;
+  }
+}
+
 
 @media screen and (max-width:350px) {
   footer .icon{

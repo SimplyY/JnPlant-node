@@ -12,16 +12,11 @@
     function paddingSceneInfo(data) {
         $('.top-img').attr('src', data.imgUrl);
         $(".title").html(markdown.toHTML("##" + data.title));
-        $(".author").html(markdown.toHTML("- 作者：" + data.authorName));
-        $(".location").html(markdown.toHTML("- 地点：" + data.location));
-        $(".month").html(markdown.toHTML("- 月份：" + data.month.toString()));
-        $(".season").html(markdown.toHTML("- 季节："+ data.season));
+        $(".author").html(markdown.toHTML("- 投稿作者：" + data.authorName));
+        $(".location").html(markdown.toHTML("- 美景地点：" + data.location));
+        $(".month").html(markdown.toHTML("- 美景时间：" + data.month.toString() + "月"));
+        // $(".season").html(markdown.toHTML("- 季节："+ data.season));
         $("#article-md-preview").html(markdown.toHTML(data.article));
-        setTimeout(function(){
-            if(window.mySceneScroll){
-                window.mySceneScroll.refresh();
-            }
-        },0);
     }
 
     function getQureyParams(url) {
@@ -36,7 +31,9 @@
             // scene_id=1
             var keyValue = params[i].split('=');
             searchParams[keyValue[0]] = keyValue[1];
-        }
-        return searchParams;
     }
+
+    return searchParams;
+}
+
 }());
