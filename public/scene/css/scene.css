@@ -8,13 +8,9 @@
     text-align: center;
 }
 
-article{
-  overflow: hidden;
-}
-
 footer{
   background-color: #4aca63;
-  height:50px;
+  height:2.5rem;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -23,7 +19,7 @@ footer{
 
 footer .icons{
   color: #ffffff;
-  padding: 0.9rem;
+  padding: 0.5rem 0rem;
   font-size: 1.5rem;
   line-height: 20px;
   width: 90%;
@@ -33,7 +29,6 @@ footer .icons{
 footer .icon{
     padding: 0 1rem;
     display: inline-block;
-    margin: 0 2rem;
 }
 
 .love-num,.com-num{
@@ -54,15 +49,9 @@ footer .icon{
   }
 }
 
-@media screen and (min-width:400px) {
+@media screen and (max-width:450px) {
   footer .icon{
-      margin: 0 3.7rem;
-  }
-}
-
-
-@media screen and (max-width:350px) {
-  footer .icon{
-      margin: 0 2.5rem;
+      margin: 0 1.2rem 0 2.2rem;
+      padding-bottom: 1rem;
   }
 }

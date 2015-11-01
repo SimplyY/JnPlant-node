@@ -3,15 +3,15 @@
     var isClicked = false;
     var currentpage = $('#scene-page');
 
-    $('#love-icon').tap(function() {
+    $('.love').tap(function() {
         if (isClicked === false) {
-            $('.love').removeClass('fa-heart-o').addClass('fa-heart').css('color', '#FF0066');
+            $(this).removeClass('fa-heart-o').addClass('fa-heart').css('color', '#FF0066');
 
             love_num = love_num + 1;
             $('.love-num').text(love_num);
             isClicked = true;
         } else if (isClicked === true) {
-            $('.love').removeClass('fa-heart').addClass('fa-heart-o').css('color', '#ffffff');
+            $(this).removeClass('fa-heart').addClass('fa-heart-o').css('color', '#ffffff');
 
             love_num = love_num - 1;
             $('.love-num').text(love_num);

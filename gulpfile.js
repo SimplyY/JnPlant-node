@@ -5,15 +5,8 @@ var browserSync = require('browser-sync').create();
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./public/scene"
-        }
-    });
-});
+            baseDir: "./public/scene/"
+        },
 
-// or...
-
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        proxy: "./public/scene"
     });
 });
