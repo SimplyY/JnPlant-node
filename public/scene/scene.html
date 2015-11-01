@@ -31,11 +31,11 @@
 
         <footer>
             <div class="icons">
-                <div class="icon">
+                <div class="icon" id="love-icon">
                     <i class="fa fa-heart-o love"></i>
                     <span class="love-num">10</span>
                 </div>
-                <div class="icon">
+                <div class="icon" id="comment-icon">
 
                     <i class="fa fa-commenting comment"></i>
                     <span class="com-num">5</span>
@@ -46,6 +46,26 @@
     </section>
 
 </body>
+
+<script type="text/javascript">
+// rem rejust
+(function(doc, window) {
+var resizeCall = function(){
+    var docEl = doc.documentElement;
+    var clientWidth = window.screen.width;
+    if (!clientWidth){
+        return;
+    }
+    if (clientWidth > 800){
+        docEl.style.fontSize = 3 * (clientWidth / 320) + 'px';
+    }else{
+        docEl.style.fontSize = 15 * (clientWidth / 320) + 'px';
+    }
+};
+
+doc.addEventListener('DOMContentLoaded', resizeCall, false);
+})(document, window);
+</script>
 
 <!-- lib -->
 <script src="lib/markdown.js"></script>

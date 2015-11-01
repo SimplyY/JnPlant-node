@@ -31,8 +31,9 @@ footer .icons{
 }
 
 footer .icon{
+    padding: 0 1rem;
     display: inline-block;
-    margin: 0 3rem;
+    margin: 0 2rem;
 }
 
 .love-num,.com-num{
