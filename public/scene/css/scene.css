@@ -17,17 +17,17 @@ footer {
     left: 0;
 }
 footer .icons {
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem 0rem 0.5rem;
     position: relative;
 }
 .icon1, .icon2 {
     position: absolute;
 }
 .icon1 {
-    left: 4.5rem;
+    left: 3rem;
 }
 .icon2 {
-    right: 5rem;
+    right: 3.5rem;
 }
 .love-num, .com-num {
     font-size: 1.4rem;

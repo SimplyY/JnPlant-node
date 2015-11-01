@@ -5,7 +5,7 @@
 
     $('.love').tap(function() {
         if (isClicked === false) {
-            $(this).removeClass('fa-heart-o').addClass('fa-heart').css('color', '#FF0066');
+            $(this).removeClass('fa-heart-o').addClass('fa-heart').css('color', '#fdacc9');
 
             love_num = love_num + 1;
             $('.love-num').text(love_num);
