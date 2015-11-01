@@ -31,3 +31,6 @@ mgdb-data/
 .DS_Store
 
 _tmp/
+pack/css/
+pack/js/
+pack/lib/
