@@ -22,6 +22,8 @@ setDataBase();
 
 loadRestRoutes();
 
+setWebPage();
+
 console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
 

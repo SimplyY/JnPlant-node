@@ -19,6 +19,7 @@
     "node-restful": "*"
   },
   "devDependencies": {
+    "brain": "^0.7.0",
     "mocha": "^2.3.3",
     "mongodb": "^2.0.43",
     "pow-mongodb-fixtures": "^0.12.0",
