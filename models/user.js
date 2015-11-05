@@ -21,10 +21,10 @@ var userSchema = new mongoose.Schema({
 
     // love ids 使用 ids 在服务器数据库去查询美景和植物(使用 url 的 qureystring in)，返回 list
     loveScenesIds: {
-        type: [Number]
+        type: [String]
     },
     lovePlantsIds: {
-        type: [Number]
+        type: [String]
     },
 });
 
