@@ -41,7 +41,8 @@ var sceneSchema = new mongoose.Schema({
     },
 
     loversAmount: {
-        type: Number
+        type: Number,
+        default: 0
     },
 
     commentsIds: {
