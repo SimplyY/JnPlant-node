@@ -15,14 +15,12 @@ var commentSchema = new mongoose.Schema({
         required: true
     },
     createdTime: {
-        type:String,
+        type: String,
         required: true
     },
 
     // replyUserId 当评论是回复评论的评论时才有
-    replyUserId: {
-        type: Number
-    },
+    replyUserId: Number
 });
 
 // Export the model schema.

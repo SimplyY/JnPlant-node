@@ -2,7 +2,11 @@ var mongoose = require('mongoose');
 
 // 每一个 comment 将造成一个 notification
 var plantSchema = new mongoose.Schema({
-    title: {
+    name: {
+        type: String,
+        required: true
+    },
+    nickName: {
         type: String,
         required: true
     },
@@ -11,27 +15,20 @@ var plantSchema = new mongoose.Schema({
         required: true
     },
     // author's id
-    author: {
+    authorId: {
         type: Number,
         required: true
     },
-    month: {
-        type: Number,
-        required: true
-    },
-    season: {
+    authorName: {
         type: String,
         required: true
     },
     // 用来在美景 list 里呈现一个美景的图片
-    img: {
+    imgUrl: {
         type: String,
         required: true
     },
-    location: {
-        type: String,
-        required: true
-    },
+
     // 是否审核通过
     hasChecked: {
         type: Boolean,
@@ -39,22 +36,20 @@ var plantSchema = new mongoose.Schema({
     },
 
     loversAmount: {
-        type: Number
+        type: Number,
+        default: 0
     },
     commentsIds: {
         type: [Number],
     },
 
     // gps info
-    // 经度
-    longitude: {
-        type: [Number],
-    },
-    // 纬度
-    latitude: {
-        type: [Number],
-    },
-
+    locations: [{
+        // 经度
+        longitude: Number,
+        // 纬度
+        latitude: Number,
+    }]
 });
 
 // Export the model schema.

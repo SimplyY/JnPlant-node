@@ -44,21 +44,17 @@ var sceneSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-
     commentsIds: {
         type: [Number],
     },
 
     // gps info
-    // 经度
-    longitude: {
-        type: [Number],
-    },
-    // 纬度
-    latitude: {
-        type: [Number],
-    },
-
+    locations: [{
+        // 经度
+        longitude: Number,
+        // 纬度
+        latitude: Number,
+    }]
 });
 
 
