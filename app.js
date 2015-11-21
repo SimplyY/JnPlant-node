@@ -43,6 +43,12 @@ function setWebPage() {
             res.send(html);
         });
     });
+    // comment page
+    app.get('/comment*', function (req, res) {
+        res.render('comment', function (err, html) {
+            res.send(html);
+        });
+    });
 }
 
 function loadRestRoutes() {
@@ -86,7 +92,6 @@ function setMidUse() {
         etag: false,
     }));
 }
-
 
 function setDataBase() {
     mongoose.connect('mongodb://localhost:27018/JnPlant');
