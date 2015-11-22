@@ -45,7 +45,7 @@ var sceneSchema = new mongoose.Schema({
         default: 0
     },
     commentsIds: {
-        type: [Number],
+        type: [String],
     },
 
     // gps info
