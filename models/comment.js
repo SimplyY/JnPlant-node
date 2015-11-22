@@ -11,7 +11,7 @@ var commentSchema = new mongoose.Schema({
         required: true
     },
     createdDate: {
-        type: Date,
+        type: String,
         required: true
     },
     createdTime: {
