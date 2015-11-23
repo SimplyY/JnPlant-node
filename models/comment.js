@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 // 每一个 comment 将造成一个 notification
 var commentSchema = new mongoose.Schema({
     userId: {
-        type: Number,
+        type: String,
         required: true
     },
     content: {
