@@ -44,12 +44,10 @@ var plantSchema = new mongoose.Schema({
     },
 
     // gps info
-    locations: [{
-        // 经度
-        longitude: Number,
-        // 纬度
-        latitude: Number,
-    }]
+    // 经度
+    longitude: Number,
+    // 纬度
+    latitude: Number,
 });
 
 // Export the model schema.
