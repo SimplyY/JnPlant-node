@@ -22,9 +22,7 @@ json = net.toJSON();
 var newNet = new brain.NeuralNetwork();
 newNet.fromJSON(json);
 
-console.log(newNet);
 console.log(json);
-console.log(json.layers[1]['0'])
 
 var output = newNet.run([1, 0]);  // [0.987]
 console.log(output);

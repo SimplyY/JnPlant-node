@@ -24,6 +24,7 @@ loadRestRoutes();
 
 setWebPage();
 
+
 console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
 
@@ -38,14 +39,32 @@ module.exports = app;
 
 function setWebPage() {
     // scene page
-    app.get('/scene*', function(req, res) {
+    app.get('/scene/*', function(req, res) {
         res.render('scene', function(err, html) {
             res.send(html);
         });
     });
+    // plant page
+    app.get('/plant/*', function(req, res) {
+        res.render('plant', function (err, html) {
+            res.send(html);
+        });
+    });
     // comment page
-    app.get('/comment*', function (req, res) {
+    app.get('/comment/*', function (req, res) {
         res.render('comment', function (err, html) {
+            res.send(html);
+        });
+    });
+    // map page
+    app.get('/map/*', function(req, res) {
+        res.render('map', function (err, html) {
+            res.send(html);
+        });
+    });
+    // nearby page
+    app.get('/nearby/*', function(req, res) {
+        res.render('nearby', function (err, html) {
             res.send(html);
         });
     });
