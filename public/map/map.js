@@ -5,6 +5,10 @@ var map = new AMap.Map('container',{
 
 var params = getQureyParams(document.URL);
 
+var apiUrl = 'http://121.40.224.83:8080/JnPlant/api/';
+var iconURL = 'http://7xkpdt.com1.z0.glb.clouddn.com/bd8d4f61d3f8a25a3926e899e487a187.png';
+
+
 if (params.sceneId !== undefined) {
     var qureyUrl = apiUrl + 'scene/' + params.sceneId;
 }
@@ -14,13 +18,9 @@ if (params.plantId !== undefined){
 
 
 $.get(qureyUrl, function (data) {
+    var title = data.title;
     var position = [data.longitude, data.latitude];
-    var titel = data.title;
-
     var contentTemplate = '<div>' + title + '</div>';
-    var apiUrl = '121.40.224.83:8080/JnPlant/api/';
-    var iconURL = 'http://7xkpdt.com1.z0.glb.clouddn.com/bd8d4f61d3f8a25a3926e899e487a187.png';
-
 
     var iconMarker = new AMap.Marker({
          position: position,
