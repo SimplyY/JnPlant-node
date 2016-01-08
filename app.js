@@ -24,6 +24,7 @@ loadRestRoutes();
 
 setWebPage();
 
+responsePicIdentify();
 
 console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
@@ -117,4 +118,10 @@ function setDataBase() {
     app.models = require('./models/index');
     // used for testing
     app.mongoose = mongoose;
+}
+
+function responsePicIdentify() {
+    app.get('/picIdentify/*', function(req, res) {
+        res.send('picIdentify api');
+    });
 }
