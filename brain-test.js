@@ -13,16 +13,14 @@
 var brain = require('brain');
 var net = new brain.NeuralNetwork();
 
-net.train([{input: [0, 0], output: [0]},
-           {input: [0, 1], output: [1]},
-           {input: [1, 0], output: [1]},
-           {input: [1, 1], output: [0]}]);
+net.train([{input: { r: [0.1,0.2,0.3]}, output: { black: 1 }},
+           {input: { r: [0.2,0.3,0.4]}, output: { white: 1 }},
+           {input: { r: [0.3,0.2,0.4]}, output: { white: 1 }}]);
+
 
 json = net.toJSON();
 var newNet = new brain.NeuralNetwork();
 newNet.fromJSON(json);
 
-console.log(json);
-
-var output = newNet.run([1, 0]);  // [0.987]
+var output = newNet.run({r:[0.1, 0, 0.3]});  // [0.987]
 console.log(output);
