@@ -5,27 +5,6 @@
     <meta charset="utf-8">
     <title>comment</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-</head>
-
-<body>
-    <div class="main-container">
-        <div id="comment-list"  v-for="item in items">
-            <div class="commentator-info">
-                <img class="avatar" v-bind:src="item.avatar" alt="" />
-                <span class="user-name">{{item.userName}}</span>
-                <span class="comment-date">{{item.createdDate}}</span>
-            </div>
-            <p class="comment-words">{{item.content}}</p>
-        </div>
-    </div>
-
-    <footer>
-        <div id="comment-area">
-            <input class="input-comment" v-model="content" type="text" name="name" value="" placeholder="评论一下...">
-            <button class="send-comment-btn" v-on:click= "send" type="button" name="button">发送</button>
-        </div>
-    </footer>
-
     <script type="text/javascript">
     (function(doc, window) {
         var resizeCall = function(){
@@ -49,6 +28,28 @@
     <script src="http://7xkpdt.com1.z0.glb.clouddn.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
     <!-- myJs -->
     <script src="bundle.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div id="comment-list"  v-for="item in items">
+            <div class="commentator-info">
+                <img class="avatar" v-bind:src="item.avatar" alt="" />
+                <span class="user-name">{{item.userName}}</span>
+                <span class="comment-date">{{item.createdDate}}</span>
+            </div>
+            <p class="comment-words">{{item.content}}</p>
+        </div>
+    </div>
+
+    <footer>
+        <div id="comment-area">
+            <input class="input-comment" v-model="content" type="text" name="name" value="" placeholder="评论一下...">
+            <button class="send-comment-btn" v-on:click= "send" type="button" name="button">发送</button>
+        </div>
+    </footer>
+
+
 </body>
 
 </html>
