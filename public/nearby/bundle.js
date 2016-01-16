@@ -1,8 +1,12 @@
-setInterval(function () {
-    var location = andriod.getCurrentLocation();
-    andriod.webToast('test');
-    andriod.webToast(location.longitude.toString() + location.latitude.toString())
-}, 100);
-andriod.webToast('test');
-var domTest = document.getElementById('test');
-domTest.text ='test';
+window.onload = function () {
+    setInterval(function () {
+        var longitude, latitude;
+        if (android.getCurrentLongitude() !== ""){
+            longitude = android.getCurrentLongitude();
+            latitude = android.getCurrentLatitude();
+            android.webToast(longitude);
+            android.webToast(latitude);
+            android.webToast('定位成功');
+        }
+    }, 8000);
+}
