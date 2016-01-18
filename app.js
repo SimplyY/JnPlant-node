@@ -16,9 +16,9 @@ setView();
 
 setMidUse();
 
-setDataBase();
+// setDataBase();
 
-loadRestRoutes();
+// loadRestRoutes();
 
 setWebPage();
 
