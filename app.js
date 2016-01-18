@@ -5,7 +5,7 @@ var compress = require('compression');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var mongoose = require('mongoose');
-
+var indentifyImg = require('./identifyImg');
 
 var app = express();
 app.config = require('./config');
@@ -22,7 +22,7 @@ loadRestRoutes();
 
 setWebPage();
 
-responsePicIdentify();
+responsePicIdentify(app);
 
 console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
@@ -116,8 +116,7 @@ function setDataBase() {
     app.mongoose = mongoose;
 }
 
-function responsePicIdentify() {
-    app.get('/picIdentify/*', function(req, res) {
-        res.send('picIdentify api');
-    });
+function responsePicIdentify(app) {
+    indentifyImg.sendImgFileNameApi(app);
+    indentifyImg.getImageIdentifyResultApi(app);
 }
