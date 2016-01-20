@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-// 每一个 comment 将造成一个 notification
 var plantSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -40,7 +39,7 @@ var plantSchema = new mongoose.Schema({
         default: 0
     },
     commentsIds: {
-        type: [Number],
+        type: [String],
     },
 
     // gps info
