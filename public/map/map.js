@@ -18,6 +18,10 @@ if (params.plantId !== undefined){
 
 
 $.get(qureyUrl, function (data) {
+    if (data.title === undefined) {
+        title = data.name;
+    }
+
     var title = data.title;
     var position = [data.longitude, data.latitude];
     var contentTemplate = '<div>' + title + '</div>';
