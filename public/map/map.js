@@ -13,16 +13,17 @@ if (params.sceneId !== undefined) {
     var qureyUrl = apiUrl + 'scene/' + params.sceneId;
 }
 if (params.plantId !== undefined){
-    var qureyUrl = apiUrl + 'plant/' + params.sceneId;
+    var qureyUrl = apiUrl + 'plant/' + params.plantId;
 }
 
 
 $.get(qureyUrl, function (data) {
+    var title;
     if (data.title === undefined) {
         title = data.name;
+    } else {
+        title = data.title;
     }
-
-    var title = data.title;
     var position = [data.longitude, data.latitude];
     var contentTemplate = '<div>' + title + '</div>';
 
