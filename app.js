@@ -110,7 +110,7 @@ function setMidUse() {
 }
 
 function setDataBase() {
-    mongoose.connect('mongodb://localhost:27018/JnPlant');
+    mongoose.connect(app.config.mongoUrl);
     app.models = require('./models/index');
     // used for testing
     app.mongoose = mongoose;
