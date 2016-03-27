@@ -7,6 +7,8 @@ var width = 128;
 var rowOfSubImg = 4;
 var colOfSubImg = 8;
 
+var trainTimesThenSleep = 10;
+
 var featureNum = rowOfSubImg*colOfSubImg * 3 + 9 + 2;
 
 getPlantsInfo(getTrainResult);
@@ -35,6 +37,7 @@ function getTrainResult(plantsInfos) {
             opencv.getfeature(trainResult.samples[i].plantImgPath, height, width, rowOfSubImg, colOfSubImg)
         );
         featureForm.push(features.slice(0, featureNum));
+        delete trainResult.samples[i].plantImgPath;
     }
 
     normalize(featureForm, trainResult.samples.length, featureNum);
@@ -42,6 +45,7 @@ function getTrainResult(plantsInfos) {
     for (i = 0; i < featureForm.length; i++) {
         trainResult.samples[i].features = featureForm[i];
     }
+
 
     function normalize(featureForm, rowNum, featureNum) {
         for (var j = 0; j < featureNum; j++) {

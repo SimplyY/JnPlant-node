@@ -17,7 +17,8 @@
     "mongoose": "*",
     "node-restful": "*",
     "request": "^2.67.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sleep": "^3.0.1"
   },
   "devDependencies": {
     "brain": "^0.7.0",

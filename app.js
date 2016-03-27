@@ -5,7 +5,7 @@ var compress = require('compression');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var mongoose = require('mongoose');
-var indentifyImg = require('./img-learn/identifyImg');
+var indentifyImg = require('./img-learn/identify-img');
 
 var app = express();
 app.config = require('./config');
