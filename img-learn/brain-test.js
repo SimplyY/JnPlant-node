@@ -5,7 +5,6 @@ var getTrainSamples = require('./feature').getTrainSamples;
 var getTestSamples = require('./feature').getTestSamples;
 
 var net = new brain.NeuralNetwork({
-    hiddenLayers: [4],
     learningRate: 0.3 // global learning rate, useful when training using streams
 });
 
@@ -14,7 +13,6 @@ getTrainSamples(function(trainSamples) {
     var samples = trainSamples.samples.map(function(sample) {
         var output = {}
         output[sample.plantName] = 1
-        console.log(sample.plantName, sample.features)
         return {
             input: sample.features,
             output: output
@@ -23,7 +21,7 @@ getTrainSamples(function(trainSamples) {
     var time1 = Date.now()
     console.log('start train')
     net.train(samples,  {
-        errorThresh: 0.0001,  // error threshold to reach
+        errorThresh: 0.005,  // error threshold to reach
         iterations: 2000,   // maximum training iterations
         log: true,           // console.log() progress periodically
         logPeriod: 100,       // number of iterations between logging

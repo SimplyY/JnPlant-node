@@ -4,15 +4,14 @@ var getPlantsInfo = require('./img-sample/read-img.js').getPlantsInfo
 var featureForm = []
 var height = 128
 var width = 128
-var rowOfSubImg = 4
-var colOfSubImg = 8
+var rowOfSubImg = 2
+var colOfSubImg = 2
 
 var featureNum = rowOfSubImg*colOfSubImg * 3 + 9 + 2
 
 exports.getTrainSamples = function(callback) {
-    getPlantsInfo('./测试样本', function(plantsInfos) {
+    getPlantsInfo('./训练样本', function(plantsInfos) {
         createTrainSamples(plantsInfos, function(trainSamples) {
-            console.log('trainSamples:', trainSamples)
             callback(trainSamples)
         })
     })
@@ -26,9 +25,10 @@ exports.getTestSamples = function(maxs, mins, callback) {
                 var testSample = {}
                 var features = opencv.getfeature(path, height, width, rowOfSubImg, colOfSubImg)
                 features = Array.prototype.slice.call(features, 0, featureNum)
+                console.log(plant.plantName, features.join(','))
 
                 testSample.features = features.map(function(feature, index) {
-                    return getNormalizeByMinMax(feature, maxs[index], mins[index])
+                    return getNormalizeByMinMax(feature, mins[index], maxs[index])
                 })
                 testSample.plantName = plant.plantName
                 testSamples.push(testSample)
@@ -63,7 +63,9 @@ function createTrainSamples(plantsInfos, callback) {
         var features = Array.prototype.slice.call(
             opencv.getfeature(trainSamples.samples[i].plantImgPath, height, width, rowOfSubImg, colOfSubImg)
         );
-        featureForm.push(features.slice(0, featureNum));
+        features = features.slice(0, featureNum)
+        console.log(trainSamples.samples[i].plantName, features.join(','))
+        featureForm.push(features);
         delete trainSamples.samples[i].plantImgPath;
     }
 
@@ -71,6 +73,7 @@ function createTrainSamples(plantsInfos, callback) {
 
     for (i = 0; i < featureForm.length; i++) {
         trainSamples.samples[i].features = featureForm[i];
+        console.log(trainSamples.samples[i])
     }
 
     callback(trainSamples);
