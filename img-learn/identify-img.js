@@ -2,14 +2,24 @@ var fs = require('fs');
 var path = require('path');
 var request = require('request');
 
+var opencv = require('/home/simplyy/opencv/index')
+var util = require('./util')
+
+var config = require('./config')
+var height = config.height
+var width = config.width
+var rowOfSubImg = config.rowOfSubImg
+var colOfSubImg = config.colOfSubImg
+var featureNum = config.featureNum
+
 module.exports = {
-    sendImgFileNameApi: sendImgFileNameApi,
-    getImageIdentifyResultApi: getImageIdentifyResultApi
+    sendImgFileNameApi,
+    getImageIdentifyResultApi
 };
 
 var imgs = {};
 
-function sendImgFileNameApi(app) {
+function sendImgFileNameApi(app, learn) {
     app.get('/sendImgFileNameApi/*', function(req, res) {
 
         var imgFileName = req.query.name;
@@ -18,9 +28,20 @@ function sendImgFileNameApi(app) {
 
         // download img in imgs folder
         var imgUrl = 'http://7xkpdt.com1.z0.glb.clouddn.com/' + imgFileName;
-        download(imgUrl, path.join(__dirname, 'img-download', imgFileName), function(){
-            // TODO 1.  getNewFeatures 提取特征值
-            // TODO 2.  getNewResult 识别 hasIdentify = true
+        var imgPath = path.join(__dirname, 'img-download', imgFileName);
+        download(imgUrl, imgPath, function(){
+            // 1.  getNewFeatures 提取特征值 run
+            var features = opencv.getfeature(imgPath, height, width, rowOfSubImg, colOfSubImg)
+            features = Array.prototype.slice.call(features, 0, featureNum)
+            features = features.map(function(feature, index) {
+                return util.getNormalizeByMinMax(feature, learn.mins[index], learn.maxs[index])
+            })
+            var runResult = learn.net.run(features)
+            console.log(imgFileName, ' runResult: ', runResult)
+            util.getPossibleResult(runResult)
+            console.log(imgFileName, ' runResult > 0.1: ', runResult)
+            // 2.  getNewResult 识别 hasIdentify = true
+            imgs[imgFileName].hasIdentify = true
         });
         function download(uri, filename, callback){
             request.head(uri, function(err, res, body){

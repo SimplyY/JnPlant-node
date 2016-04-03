@@ -10,6 +10,8 @@ var indentifyImg = require('./img-learn/identify-img');
 var app = express();
 app.config = require('./config');
 
+var learn = require('./img-learn/learn');
+
 setHeader();
 
 setView();
@@ -22,7 +24,7 @@ loadRestRoutes();
 
 setWebPage();
 
-responsePicIdentify(app);
+responsePicIdentify(app, learn);
 
 console.log('Listening on port ' + app.config.Port + ' ...');
 app.listen(app.config.Port);
@@ -116,7 +118,7 @@ function setDataBase() {
     app.mongoose = mongoose;
 }
 
-function responsePicIdentify(app) {
-    indentifyImg.sendImgFileNameApi(app);
+function responsePicIdentify(app, learn) {
+    indentifyImg.sendImgFileNameApi(app, learn);
     indentifyImg.getImageIdentifyResultApi(app);
 }

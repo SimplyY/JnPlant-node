@@ -1,13 +1,17 @@
 var opencv = require('/home/simplyy/opencv/index')
 var getPlantsInfo = require('./img-sample/read-img.js').getPlantsInfo
 
-var featureForm = []
-var height = 128
-var width = 128
-var rowOfSubImg = 4
-var colOfSubImg = 8
+var util = require('./util')
 
-var featureNum = rowOfSubImg*colOfSubImg * 3 + 9 + 2
+var featureForm = []
+
+var config = require('./config');
+var height = config.height
+var width = config.width
+var rowOfSubImg = config.rowOfSubImg
+var colOfSubImg = config.colOfSubImg
+
+var featureNum = config.featureNum
 
 exports.getTrainSamples = function(callback) {
     getPlantsInfo('./训练样本', function(plantsInfos) {
@@ -17,7 +21,7 @@ exports.getTrainSamples = function(callback) {
     })
 }
 
-exports.getTestSamples = function(maxs, mins, callback) {
+exports.getTestSamples = function(mins, maxs, callback) {
     getPlantsInfo('./测试样本', function(plantsInfos) {
         var testSamples = []
         plantsInfos.forEach(function(plant) {
@@ -27,7 +31,7 @@ exports.getTestSamples = function(maxs, mins, callback) {
                 features = Array.prototype.slice.call(features, 0, featureNum)
 
                 testSample.features = features.map(function(feature, index) {
-                    return getNormalizeByMinMax(feature, mins[index], maxs[index])
+                    return util.getNormalizeByMinMax(feature, mins[index], maxs[index])
                 })
                 testSample.plantName = plant.plantName
                 testSamples.push(testSample)
@@ -89,15 +93,5 @@ function createTrainSamples(plantsInfos, callback) {
                 featureForm[i][j] = getNormalizeByMinMax(featureForm[i][j], min, max);
             }
         }
-    }
-}
-
-function getNormalizeByMinMax(feature, min, max) {
-    if (min === max) {
-        return 1;
-    }
-    else {
-        var value = (feature - min)/(max - min)
-        return value < 1 ? value : 1;
     }
 }
