@@ -90,7 +90,7 @@ function createTrainSamples(plantsInfos, callback) {
             trainSamples.maxs.push(max);
 
             for (i = 0; i < rowNum; i++) {
-                featureForm[i][j] = getNormalizeByMinMax(featureForm[i][j], min, max);
+                featureForm[i][j] = util.getNormalizeByMinMax(featureForm[i][j], min, max);
             }
         }
     }

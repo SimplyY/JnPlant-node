@@ -19,7 +19,7 @@ function getPossibleResult(runResult) {
     }
 }
 
-exports = {
+module.exports = {
     getNormalizeByMinMax,
     getPossibleResult
 }

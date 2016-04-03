@@ -1,7 +1,7 @@
 var rowOfSubImg = 4
 var colOfSubImg = 8
 
-exports = {
+module.exports = {
     height: 128,
     width: 128,
     rowOfSubImg,

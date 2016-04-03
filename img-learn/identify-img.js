@@ -30,7 +30,7 @@ function sendImgFileNameApi(app, learn) {
         var imgUrl = 'http://7xkpdt.com1.z0.glb.clouddn.com/' + imgFileName;
         var imgPath = path.join(__dirname, 'img-download', imgFileName);
         download(imgUrl, imgPath, function(){
-            // 1.  getNewFeatures 提取特征值 run
+            // 1. getNewFeatures 提取特征值 run
             var features = opencv.getfeature(imgPath, height, width, rowOfSubImg, colOfSubImg)
             features = Array.prototype.slice.call(features, 0, featureNum)
             features = features.map(function(feature, index) {
@@ -40,7 +40,7 @@ function sendImgFileNameApi(app, learn) {
             console.log(imgFileName, ' runResult: ', runResult)
             util.getPossibleResult(runResult)
             console.log(imgFileName, ' runResult > 0.1: ', runResult)
-            // 2.  getNewResult 识别 hasIdentify = true
+            // 2. getNewResult 识别 hasIdentify = true
             imgs[imgFileName].hasIdentify = true
         });
         function download(uri, filename, callback){
