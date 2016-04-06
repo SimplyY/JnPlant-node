@@ -30,6 +30,7 @@ function sendImgFileNameApi(app, learn) {
         var imgUrl = 'http://7xkpdt.com1.z0.glb.clouddn.com/' + imgFileName
         var imgPath = path.join(__dirname, 'img-download', imgFileName)
         download(imgUrl, imgPath, function(){
+
             // 1. getNewFeatures 提取特征值 run
             var features = opencv.getfeature(imgPath, height, width, rowOfSubImg, colOfSubImg)
             features = Array.prototype.slice.call(features, 0, featureNum)
@@ -39,16 +40,19 @@ function sendImgFileNameApi(app, learn) {
             var runResult = learn.net.run(features)
             var formatResult = util.getFormatResult(runResult)
             console.log(imgFileName, formatResult)
+
             // 2. getNewResult 识别 hasIdentify = true
             imgs[imgFileName].hasIdentify = true
+            imgs[imgFileName].indentifyResultList = formatResult
         })
-        function download(uri, filename, callback){
-            request.head(uri, function(err, res, body){
-                request(uri).pipe(fs.createWriteStream(filename)).on('close', callback)
-            })
-        }
 
         res.send('get it')
+    })
+}
+
+function download(uri, filename, callback){
+    request.head(uri, function(err, res, body){
+        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback)
     })
 }
 
@@ -60,26 +64,14 @@ function getImageIdentifyResultApi(app) {
         } else if (imgs[imgFileName].hasIdentify === false) {
             res.send('hasn\'t finish identify')
         } else {
-            res.send(JSON.stringify(imgs[imgFileName]))
+            res.json(imgs[imgFileName])
         }
     })
 }
 
 function getNewImg() {
     return {
-        featureList:[],
         indentifyResultList:[],
         hasIdentify: false,
-    }
-}
-
-function getNewFeatures() {
-
-}
-
-function getNewResult() {
-    return {
-        plantName: 'xxx',
-        plantValue: 'xx.x%'
     }
 }
