@@ -7,5 +7,5 @@ module.exports = {
     rowOfSubImg,
     colOfSubImg,
 
-    featureNum: rowOfSubImg*colOfSubImg * 3 + 9 + 2
+    featureNum: rowOfSubImg*colOfSubImg*3 + 9 + 2
 }

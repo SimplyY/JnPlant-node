@@ -1,6 +1,6 @@
-var fs = require('fs');
-var path = require('path');
-var request = require('request');
+var fs = require('fs')
+var path = require('path')
+var request = require('request')
 
 var opencv = require('/home/simplyy/opencv/index')
 var util = require('./util')
@@ -15,20 +15,20 @@ var featureNum = config.featureNum
 module.exports = {
     sendImgFileNameApi,
     getImageIdentifyResultApi
-};
+}
 
-var imgs = {};
+var imgs = {}
 
 function sendImgFileNameApi(app, learn) {
     app.get('/sendImgFileNameApi/*', function(req, res) {
 
-        var imgFileName = req.query.name;
-        imgs[imgFileName] = getNewImg();
-        imgs[imgFileName].hasUploaded = true;
+        var imgFileName = req.query.name
+        imgs[imgFileName] = getNewImg()
+        imgs[imgFileName].hasUploaded = true
 
         // download img in imgs folder
-        var imgUrl = 'http://7xkpdt.com1.z0.glb.clouddn.com/' + imgFileName;
-        var imgPath = path.join(__dirname, 'img-download', imgFileName);
+        var imgUrl = 'http://7xkpdt.com1.z0.glb.clouddn.com/' + imgFileName
+        var imgPath = path.join(__dirname, 'img-download', imgFileName)
         download(imgUrl, imgPath, function(){
             // 1. getNewFeatures 提取特征值 run
             var features = opencv.getfeature(imgPath, height, width, rowOfSubImg, colOfSubImg)
@@ -42,28 +42,28 @@ function sendImgFileNameApi(app, learn) {
             console.log(imgFileName, ' runResult > 0.1: ', runResult)
             // 2. getNewResult 识别 hasIdentify = true
             imgs[imgFileName].hasIdentify = true
-        });
+        })
         function download(uri, filename, callback){
             request.head(uri, function(err, res, body){
-                request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-            });
+                request(uri).pipe(fs.createWriteStream(filename)).on('close', callback)
+            })
         }
 
-        res.send('get it');
-    });
+        res.send('get it')
+    })
 }
 
 function getImageIdentifyResultApi(app) {
     app.get('/getImageIdentifyResultApi/*', function(req, res) {
-        var imgFileName = req.query.name;
+        var imgFileName = req.query.name
         if (imgs[imgFileName] === undefined) {
-            res.send('has\'t send this img file name');
+            res.send('has\'t send this img file name')
         } else if (imgs[imgFileName].hasIdentify === false) {
-            res.send('hasn\'t finish identify');
+            res.send('hasn\'t finish identify')
         } else {
-            res.send(JSON.stringify(imgs[imgFileName]));
+            res.send(JSON.stringify(imgs[imgFileName]))
         }
-    });
+    })
 }
 
 function getNewImg() {
@@ -71,7 +71,7 @@ function getNewImg() {
         featureList:[],
         indentifyResultList:[],
         hasIdentify: false,
-    };
+    }
 }
 
 function getNewFeatures() {
@@ -82,5 +82,5 @@ function getNewResult() {
     return {
         plantName: 'xxx',
         plantValue: 'xx.x%'
-    };
+    }
 }

@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "brain": "^0.7.0",
+    "heapdump": "^0.3.7",
     "mocha": "^2.3.3",
     "mongodb": "^2.0.43",
     "should": "^7.1.0",
