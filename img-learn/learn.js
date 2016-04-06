@@ -29,7 +29,7 @@ getTrainSamples(function(trainSamples) {
 
     console.log('start train')
     net.train(samples,  {
-        errorThresh: 0.002,  // error threshold to reach
+        errorThresh: 0.001,  // error threshold to reach
         iterations: 2000,   // maximum training iterations
         log: true,           // console.log() progress periodically
         logPeriod: 100,       // number of iterations between logging
