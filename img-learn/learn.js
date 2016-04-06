@@ -39,8 +39,8 @@ getTrainSamples(function(trainSamples) {
         testSamples.forEach(function(testSample) {
             var runResult = net.run(testSample.features)
             console.log('infact plantName: ', testSample.plantName)
-            util.getPossibleResult(runResult)
-            console.log('runResult: ', runResult)
+            var formatResult = util.getFormatResult(runResult)
+            console.log('runResult: ', formatResult)
         })
     })
 })

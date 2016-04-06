@@ -37,9 +37,8 @@ function sendImgFileNameApi(app, learn) {
                 return util.getNormalizeByMinMax(feature, learn.mins[index], learn.maxs[index])
             })
             var runResult = learn.net.run(features)
-            console.log(imgFileName, ' runResult: ', runResult)
-            util.getPossibleResult(runResult)
-            console.log(imgFileName, ' runResult > 0.1: ', runResult)
+            var formatResult = util.getFormatResult(runResult)
+            console.log(imgFileName, formatResult)
             // 2. getNewResult 识别 hasIdentify = true
             imgs[imgFileName].hasIdentify = true
         })
